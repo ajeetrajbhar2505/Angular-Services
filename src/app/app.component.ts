@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { WebService } from './services/web.service';
+import { Product } from './model/product.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'youtube';
+  products: Product[] = []
+  constructor(private WebService: WebService) { 
+    this.products = this.WebService.getProductDetails()
+    console.log(this.WebService.data);
+    
+  }
 }
